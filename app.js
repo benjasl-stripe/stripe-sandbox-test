@@ -12,6 +12,25 @@ const stripe = Stripe(process.env.STRIPE_API_KEY);
 // Middleware to parse JSON requests
 app.use(express.json());
 
+
+// Example route to create a payment intent
+app.post('/create-payment-intent', async (req, res) => {
+   const { amount, currency } = req.body;
+   try {
+       const paymentIntent = await stripe.paymentIntents.create({
+           amount: amount,
+           currency: currency,
+       });
+	res.status(200).json({ 
+       clientSecret: paymentIntent.client_secret
+      });
+   } catch (error) {
+    console.error('Error creating payment intent:', error);
+    res.status(500).json({ error: error.message });
+   }
+})
+
+
 app.get('/account', async (req, res) => {
    try {
        const account = await stripe.accounts.retrieve();
