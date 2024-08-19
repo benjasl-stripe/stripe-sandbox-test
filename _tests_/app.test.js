@@ -10,15 +10,15 @@ describe('Stripe Sandbox Integration', () => {
         expect(process.env.STRIPE_PUBLISHABLE_KEY).toBeDefined();
     });
 
-    // First test: confirm connection to the Stripe Sandbox
-    test('GET /test-sandbox should confirm connection to the Stripe Sandbox', async () => {
+    // First devSandbox test: confirm connection to the Stripe Sandbox
+    devSandbox('GET /test-sandbox should confirm connection to the Stripe Sandbox', async () => {
         const response = await request(app).get('/test-sandbox');
         expect(response.status).toBe(200);
         expect(response.text).toBe('Connected to Stripe Sandbox successfully!');
     });
 
-    // Second test: check the publishable key
-    test('GET /publishable-key should return the correct publishable key', async () => {
+    // Second devSandbox test: check the publishable key
+    devSandbox('GET /publishable-key should return the correct publishable key', async () => {
         const response = await request(app).get('/publishable-key');
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('publishableKey');
