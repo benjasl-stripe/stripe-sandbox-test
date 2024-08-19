@@ -1,7 +1,6 @@
-# Stripe API Express Server Sandboxes example
+# stripe sandbox test
 
-
-This is an Express server example that interacts with the Stripe API, it includes a test workflow that ensures the Stripe API is associated with a Stripe Sandbox environment named "dev-sandbox".
+This is an Express server example that interacts with the Stripe API. It includes a deployment [workflow](/.github/workflows/ci.yml) that runs a [test](/_tests_/app.test.js) ensures the Stripe API is associated with a Stripe Sandbox environment named "dev-sandbox".
 
 ## Prerequisites
 
