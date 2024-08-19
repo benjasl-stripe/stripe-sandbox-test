@@ -31,6 +31,16 @@ app.get('/publishable-key', (req, res) => {
     }
 });
 
+app.get('/account', async (req, res) => {
+   try {
+       const account = await stripe.accounts.retrieve();
+       res.status(200).json(account);
+   } catch (error) {
+       console.error('Error retrieving account:', error);
+       res.status(500).json({ error: error.message });
+   }
+});
+
 // Start the server only if this file is run directly
 if (require.main === module) {
     app.listen(port, () => {
