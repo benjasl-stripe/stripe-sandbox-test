@@ -12,25 +12,6 @@ const stripe = Stripe(process.env.STRIPE_API_KEY);
 // Middleware to parse JSON requests
 app.use(express.json());
 
-// Test route to confirm the API connection
-app.get('/test-sandbox', (req, res) => {
-    if (process.env.STRIPE_API_KEY) {
-        res.status(200).send('Connected to Stripe Sandbox successfully!');
-    } else {
-        res.status(500).send('Failed to connect to Stripe Sandbox.');
-    }
-});
-
-// Route to get the publishable key
-app.get('/publishable-key', (req, res) => {
-    const publishableKey = process.env.STRIPE_PUBLISHABLE_KEY; // Add this to your .env file
-    if (publishableKey) {
-        res.status(200).json({ publishableKey });
-    } else {
-        res.status(500).send('Publishable key not configured.');
-    }
-});
-
 app.get('/account', async (req, res) => {
    try {
        const account = await stripe.accounts.retrieve();
