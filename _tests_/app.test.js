@@ -16,5 +16,7 @@ describe('Stripe Sandbox Integration', () => {
         expect(response.body).toHaveProperty('id'); // Check for the existence of an account ID
         expect(response.body.business_profile).toHaveProperty('name', 'Sandbox'); // Confirm business profile name
         expect(response.body.settings.dashboard).toHaveProperty('display_name', 'dev-sandbox'); // Check for display_name
+        // Output the name of the sandbox
+        console.log('Sandbox Name:', response.body.settings.dashboard.display_name);
     });
 });
