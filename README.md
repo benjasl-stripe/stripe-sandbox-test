@@ -1,7 +1,7 @@
 # Stripe API Express Server Sandboxes example
 
 
-This is an Express server implementation that interacts with the Stripe API.
+This is an Express server example that interacts with the Stripe API, it includes a test workflow that ensures the Stripe API is associated with a Stripe Sandbox environment named "dev-sandbox".
 
 ## Prerequisites
 
@@ -10,18 +10,30 @@ Before running this application, make sure you have the following:
 - Node.js installed on your machine
 - Stripe API key
 
+
+### How to Find a Sandbox Key
+
+The following steps show you how to find a sandbox key:
+
+1. Visit [Stripe Sandboxes Dashboard](https://dashboard.stripe.com/sandboxes) to view a complete list of all the sandboxes in your account, or choose the account dropdown from the top left corner of the dashboard.
+
+2. Choose the sandbox you wish to gain programmatic access to, and then select **Manage API keys** from the sandbox welcome page.
+
+3. From the API Keys dashboard, you can reveal, revoke, and create API keys. Check the documentation to learn how to manage API keys. To see the API key for your Sandbox environment, choose **Reveal test Key**.
+
+
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/benjasl-stripe/sandboxes.git
    ```
 
 2. Install the dependencies:
 
    ```bash
-   cd your-repo
+   cd sandboxes
    npm install
    ```
 
@@ -46,3 +58,21 @@ Before running this application, make sure you have the following:
 ### Create a Payment Intent
 
 Send a POST request to `/create-payment-intent` with the following JSON payload:
+```bash
+curl -X POST http://localhost:3000/create-payment-intent \
+-H "Content-Type: application/json" \
+-d '{"amount": 1000, "currency": "usd"}'
+```
+
+
+### Set Up GitHub Secrets
+
+When using GitHub Actions for CI/CD, manage sensitive data securely using GitHub Secrets:
+
+1. Go to your GitHub repository.
+2. Choose **Settings** from the toolbar.
+3. On the left sidebar, navigate to **Secrets and variables** and choose **Actions**, then select **New repository secret**.
+4. Add your secrets one at a time.
+
+### Reference Secrets in GitHub Actions
+GitHub Actions allows you to automate your workflows and CI/CD processes. This [workflow](/.github/workflows/ci.yml) automates the process of testing the application whenever changes are pushed to the main branch. It checks out the latest code, sets up the necessary environment, installs any required dependencies, and runs tests that interact with Stripe to verify that the code is executing in the correct sandbox. This helps ensure the integrity and functionality of the application in a continuous and efficient manner, while maintaining secure practices in handling sensitive credentials like API keys:
