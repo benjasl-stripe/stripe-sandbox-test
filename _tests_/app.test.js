@@ -14,6 +14,8 @@ describe('Stripe Sandbox Integration', () => {
      test('GET /account should return account details from Stripe', async () => {
         const response = await request(app).get('/account');
         expect(response.status).toBe(200);
-        expect(response.body.settings.dashboard.display_name).tobe('dev-sandbox'); // Check for the existence of an account ID
+        expect(response.body).toHaveProperty('id'); // Check for the existence of an account ID
+        expect(response.body.business_profile).toHaveProperty('name', 'Sandbox'); // Confirm business profile name
+        expect(response.body.settings.dashboard).toHaveProperty('display_name', 'dev-sandbox'); // Check for display_name
     });
 });
