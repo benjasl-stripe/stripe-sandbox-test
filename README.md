@@ -14,7 +14,7 @@ Before running this application, make sure you have the following:
 
 The following steps show you how to find a sandbox key:
 
-1. Visit [Stripe Sandboxe Dashboard](https://dashboard.stripe.com/sandboxes) to view a complete list of all the sandboxes in your account, or choose the account dropdown from the top left corner of the dashboard.
+1. Visit the [Stripe Sandbox Dashboard](https://dashboard.stripe.com/sandboxes) to view a complete list of all the sandboxes in your account, or choose the account dropdown from the top left corner of the dashboard.
 
 2. Choose the sandbox you wish to gain programmatic access to, and then select **Manage API keys** from the sandbox welcome page.
 
