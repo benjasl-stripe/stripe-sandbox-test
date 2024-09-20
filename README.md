@@ -3,6 +3,8 @@
 A Simple Stripe integration using Node.js Express. 
 
 This example includes a deployment [workflow](/.github/workflows/ci.yml) that runs a [test](/_tests_/app.test.js) on each commit to check that the Stripe API is associated with a Stripe Sandbox environment named "dev-sandbox".
+
+
 Read more about Stripe sandboxes in this [Stripe.dev blog post](https://stripe.dev/blog/avoiding-test-mode-tangles-with-stripe-sandboxes).
 
 ![Stripe Sandboxes](/resources/sandbox.png)
